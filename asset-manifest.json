@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tasksphere-react/static/css/main.f855e6bc.css",
+    "main.js": "/tasksphere-react/static/js/main.6b96570c.js",
+    "static/js/453.2ce0ca13.chunk.js": "/tasksphere-react/static/js/453.2ce0ca13.chunk.js",
+    "index.html": "/tasksphere-react/index.html",
+    "main.f855e6bc.css.map": "/tasksphere-react/static/css/main.f855e6bc.css.map",
+    "main.6b96570c.js.map": "/tasksphere-react/static/js/main.6b96570c.js.map",
+    "453.2ce0ca13.chunk.js.map": "/tasksphere-react/static/js/453.2ce0ca13.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.6b96570c.js"
+  ]
+}
