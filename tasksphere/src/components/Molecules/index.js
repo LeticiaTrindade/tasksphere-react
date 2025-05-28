@@ -12,3 +12,5 @@ export { default as FilterSelect } from './FilterSelecter';
 export { default as SearchInput } from './SearchInput';
 export { default as TaskForm } from './Task/TaskForm';
 export { default as UserSuggestions } from './UserSuggestions';
+export { default as Form } from './Form';
+export { default as List } from './List';

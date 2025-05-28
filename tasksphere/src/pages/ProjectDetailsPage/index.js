@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase';
-
 import { DashboardLayout } from '../../components/Templates';
 import Header from '../../components/Molecules/Header';
 import ProjectDetails from '../../components/Organisms/ProjectDetails';
+import * as Atoms from '../../components/Atoms';
 
 export default function ProjectDetailsPage() {
   const { projectId } = useParams();
@@ -17,33 +17,36 @@ export default function ProjectDetailsPage() {
   const [filter, setFilter] = useState('');
   const [search, setSearch] = useState('');
 
-  // Funções assíncronas de busca
   const fetchProject = async () => {
-    const q = query(collection(db, 'projects'), where('__name__', '==', projectId));
-    const snapshot = await getDocs(q);
-    if (!snapshot.empty) {
-      setProject({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() });
-    } else {
+    try {
+      const q = query(collection(db, 'projects'), where('__name__', '==', projectId));
+      const snapshot = await getDocs(q);
+      if (!snapshot.empty) {
+        setProject({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() });
+      } else {
+        setProject(null);
+      }
+    } catch (error) {
+      console.error('Erro ao buscar projeto:', error);
       setProject(null);
     }
   };
 
+  // Fetch tasks
   const fetchTasks = async () => {
-    console.log('passou aqui emo projectdetailspage1');
     const q = query(collection(db, 'tasks'), where('project_id', '==', projectId));
     const snapshot = await getDocs(q);
     const tasksList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-    console.log('passou aqui emo projectdetailspage2');
     setTasks(tasksList);
   };
 
+  // Fetch collaborators
   const fetchCollaborators = async (projectId) => {
     const snapshot = await getDocs(collection(db, `projects/${projectId}/collaborators`));
     const collaboratorsList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
     setCollaborators(collaboratorsList);
   };
 
-  // useEffect para carregar tudo ao montar o componente
   useEffect(() => {
     if (projectId) {
       fetchProject();
@@ -51,7 +54,6 @@ export default function ProjectDetailsPage() {
     }
   }, [projectId]);
 
-  // useEffect para carregar os colaboradores assim que o projeto for carregado
   useEffect(() => {
     if (project && project.id) {
       fetchCollaborators(project.id);
@@ -71,7 +73,7 @@ export default function ProjectDetailsPage() {
     return (
       <DashboardLayout>
         <Header />
-        <p>Carregando...</p>
+        <Atoms.SkeletonLoader />
       </DashboardLayout>
     );
   }

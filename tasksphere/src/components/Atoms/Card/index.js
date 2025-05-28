@@ -12,9 +12,7 @@ const Card = styled.div`
 `;
 
 Card.defaultProps = {
-    p: 3,                   // padding: theme.space[3]
-    borderRadius: '8px',
-    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+    p: 3,                
     bg: 'white',
     padding: "1rem",
     boxShadow: "sm",

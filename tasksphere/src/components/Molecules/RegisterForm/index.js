@@ -5,6 +5,7 @@ import PasswordValidation from '../../../utils/PasswordValidation.js';
 import { auth, db } from '../../../config/firebase.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
+import AuthContext from '../../../auth/AuthContext';
 
 function RegisterForm() {
     const [name, setName] = useState('');
@@ -51,12 +52,12 @@ function RegisterForm() {
     return (
         <form onSubmit={handleRegister}>
             <h2>Registrar</h2>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
+            {error && <Atoms.Text variant="error">{error}</Atoms.Text>}
             <Atoms.Input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
             <Atoms.Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
             <Atoms.Input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Senha" />
             <Atoms.Input type="password" value={confirmPassword} onChange={e => setconfirmPassword(e.target.value)} placeholder="Confirmar senha" />
-            <Atoms.Button type="submit">Cadastrar</Atoms.Button>
+            <Atoms.Button type="submit" aria-label="Cadastrar conta de usuário">Cadastrar</Atoms.Button>
             <Atoms.Text>Ja possui uma conta? <Link to="/">Faça o login!</Link></Atoms.Text>
         </form>
     );

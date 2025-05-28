@@ -47,7 +47,7 @@ function ProjectSection() {
         setNewDescription('');
         setNewStartDate('');
         setNewEndDate('');
-        setCurrentPage(1); // Voltar para a primeira página após adicionar
+        setCurrentPage(1); 
 
         await getProjects();
     }
@@ -56,7 +56,6 @@ function ProjectSection() {
         getProjects();
     }, [user]);
 
-    // Cálculo da paginação
     const totalPages = Math.ceil(projects.length / itemsPerPage);
     const startIndex = (currentPage - 1) * itemsPerPage;
     const currentProjects = projects.slice(startIndex, startIndex + itemsPerPage);

@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import formatDate from '../../../utils/formatDate';
-import { TaskList } from '../../Molecules';
 import * as Molecules from '../../Molecules';
+import * as MoleculesTasks from '../../Molecules';
 import * as Atoms from '../../Atoms';
 import { addDoc, collection, doc, setDoc, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../../config/firebase';
 import AuthContext from '../../../auth/AuthContext';
+import { FaUser, FaPlus, FaSearch, FaFilter, FaProjectDiagram } from 'react-icons/fa';
 
 function ProjectDetails({
     project,
@@ -19,7 +20,6 @@ function ProjectDetails({
     setTasks
 }) {
 
-
     const handleAddCollaborator = async (user) => {
         if (collaborators.some(c => c.id === user.id)) {
             alert("Colaborador já adicionado!");
@@ -31,8 +31,6 @@ function ProjectDetails({
 
         const snapshot = await getDocs(collection(db, `projects/${project.id}/collaborators`));
         const newCollaboratorsList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-
-        // Atualiza o estado vindo por props
         setCollaborators(newCollaboratorsList);
     };
     const getTasks = async () => {
@@ -52,23 +50,16 @@ function ProjectDetails({
     const [newDueDate, setNewDueDate] = useState('');
     const [newStatus, setNewStatus] = useState('');
     const [newImageUrl, setNewImageUrl] = useState('');
-    // Paginação
     const tasksPerPage = 5;
     const [currentPage, setCurrentPage] = useState(1);
     const loading = !project || !tasks || !collaborators;
-
-
-    // Filtragem e busca
     const filteredTasks = tasks
         .filter(task => filter ? task.status === filter : true)
         .filter(task => task.name.toLowerCase().includes(search.toLowerCase()));
-
     const indexOfLastTask = currentPage * tasksPerPage;
     const indexOfFirstTask = indexOfLastTask - tasksPerPage;
     const currentTasks = filteredTasks.slice(indexOfFirstTask, indexOfLastTask);
     const totalPages = Math.ceil(filteredTasks.length / tasksPerPage);
-
-
     const addTask = async () => {
         if (newTaskName.length < 3) return alert('Nome da tarefa deve ter pelo menos 3 caracteres');
         if (!newDueDate) return alert('Vencimento obrigatório');
@@ -87,13 +78,10 @@ function ProjectDetails({
 
             alert('Tarefa adicionada com sucesso!');
 
-            // Limpar os campos
             setNewTaskName('');
             setNewDescription('');
             setNewDueDate('');
-            setNewStatus('');
 
-            // Atualizar as tarefas localmente
             await getTasks();
 
         } catch (error) {
@@ -116,25 +104,25 @@ function ProjectDetails({
                     <Atoms.Text variant="titleLogin" className="mb-2">Detalhes do Projeto</Atoms.Text>
                     <p className="mb-2">{project.description}</p>
 
-                    <div className="mt-4">
+                    <Atoms.Box className="mt-4">
                         <Atoms.Text variant="titleLogin" className="mb-2">Colaboradores:</Atoms.Text>
                         {collaborators.length > 0 ? (
                             <ul className="list-disc list-inside">
                                 {collaborators.map(user => (
                                     <li key={user.id}>
-                                        {user.name || user.email || "Usuário sem nome"}
+                                        <Atoms.Icon name="user" /> {user.name ? user.name : "Nome não disponível"} - {user.email ? user.email : "Email não disponível"}
                                     </li>
                                 ))}
                             </ul>
                         ) : (
                             <p className="text-sm text-gray-500">Nenhum colaborador encontrado.</p>
                         )}
-                    </div>
+                    </Atoms.Box>
 
                     <Molecules.UserSuggestions onAdd={handleAddCollaborator} />
                 </Atoms.Card>
 
-                <Molecules.TaskForm
+                <MoleculesTasks.TaskForm
                     newTaskName={newTaskName}
                     setNewTaskName={setNewTaskName}
                     newDescription={newDescription}
@@ -149,7 +137,7 @@ function ProjectDetails({
                     <Molecules.FilterSelect filter={filter} setFilter={setFilter} />
                     <Molecules.SearchInput search={search} setSearch={setSearch} />
 
-                    <TaskList
+                    <Molecules.TaskList
                         tasks={currentTasks}
                         projects={[project]}
                         project={project}

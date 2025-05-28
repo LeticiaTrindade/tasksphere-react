@@ -1,17 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import * as Atoms from '../../../Atoms';
+import formatDate from '../../../../utils/formatDate';
 
-function formatDate(date) {
-    if (!date) return 'Não informado';
-    if (date.seconds) {
-        return new Date(date.seconds * 1000).toLocaleDateString();
-    }
-    const parsedDate = new Date(date);
-    if (!isNaN(parsedDate)) {
-        return parsedDate.toLocaleDateString();
-    }
-    return 'Data inválida';
-}
 
 function ProjectItem({ project, compact = false }) {
     const navigate = useNavigate();
@@ -38,10 +28,10 @@ function ProjectItem({ project, compact = false }) {
                 <p>{project.description}</p>
             )}
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontSize: '0.95rem', color: '#666' }}>
+            <Atoms.Box style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontSize: '0.95rem', color: '#666' }}>
                 <p><strong>Início:</strong> {formatDate(project.start_date)}</p>
                 <p><strong>Término:</strong> {formatDate(project.end_date)}</p>
-            </div>
+            </Atoms.Box>
 
             {!compact && (
                 <Atoms.Text>
@@ -53,9 +43,9 @@ function ProjectItem({ project, compact = false }) {
             )}
 
             <Atoms.Box >
-                <Atoms.Button onClick={handleViewProject}>
+                <Atoms.Button onClick={handleViewProject} aria-label="Ver mais detalhes do projeto">
                     Ver Projeto
-                </Atoms.Button>
+                </Atoms.Button >
             </Atoms.Box>
         </Atoms.Card>
     );

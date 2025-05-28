@@ -12,6 +12,13 @@ const ButtonStyle = styled.button`
   width: 100%;
   height: 50px;
   marginBottom: 1rem;
+  &:hover {
+  background-color: #1e6fbb;
+}
+&:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
  `;
 
 ButtonStyle.defaultProps = {

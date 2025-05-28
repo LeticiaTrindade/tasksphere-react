@@ -3,24 +3,29 @@ import { space } from 'styled-system';
 
 const InputStyle = styled.input`
   ${space}
-  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   min-width: 100%;
   max-width: 100%;
-  margin-bottom: 10px;
-  padding-right: 24px;
-  box-sizing: border-box;
+  transition: all 0.2s ease-in-out; 
+  min-height: 40px;
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); 
+  }
 `;
 
 InputStyle.defaultProps = {
   padding: '10px',
-  minWidth: '100%',
-  maxWidth: '100%',
-  marginBottom: '10px',
-  paddingRight: '24px',
-  boxSizing: 'border-box'
+  mb: '10px',
+  pr: '24px',
+  margin: '100px',
 };
 
-const Input = ({ type, value, onChange, placeholder, name }) => {
+const Input = ({ type, value, onChange, placeholder, name, ...props }) => {
   return (
     <InputStyle
       type={type}
@@ -28,8 +33,9 @@ const Input = ({ type, value, onChange, placeholder, name }) => {
       onChange={onChange}
       placeholder={placeholder}
       name={name}
+      {...props}
     />
   );
-}  
+};
 
 export default Input;

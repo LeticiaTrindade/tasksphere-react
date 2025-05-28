@@ -29,9 +29,9 @@ function UserSuggestions({ onAdd }) {
     }, []);
 
     return (
-        <div className="p-4 border rounded">
+        <Atoms.Box className="p-4 border rounded">
             <h3 className="font-bold mb-2">Sugestões de colaboradores</h3>
-            {loading ? <p>Carregando...</p> : (
+            {loading ?< Atoms.SkeletonLoader /> : (
                 <ul style={{ decoration: 'none', padding: '0', listStyleType: 'none' }}>
                     {suggestions.map(user => (
                         <Atoms.Box style={{ marginBottom: '10px', width: '100%' }} key={user.id}>
@@ -41,7 +41,7 @@ function UserSuggestions({ onAdd }) {
                                     <span>{user.name}</span>
                                 </Atoms.Box>
                                 <Atoms.Box style={{ width: '60px', height: '40px', overflow: 'hidden' }}>
-                                    <Atoms.Button onClick={() => onAdd(user)}>Adicionar</Atoms.Button>
+                                    <Atoms.Button onClick={() => onAdd(user)} aria-label="Adicionar colaborador">Adicionar</Atoms.Button>
                                 </Atoms.Box>
                             </Atoms.Flex>
 
@@ -51,8 +51,8 @@ function UserSuggestions({ onAdd }) {
                 </ul>
             )
             }
-            <Atoms.Button onClick={fetchSuggestions} className="mt-4">Buscar Novos</Atoms.Button>
-        </div >
+            <Atoms.Button onClick={fetchSuggestions} className="mt-4" aria-label="Buscar por mais colaboradores">Buscar Novos</Atoms.Button>
+        </Atoms.Box>
     );
 }
 

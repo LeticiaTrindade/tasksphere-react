@@ -1,4 +1,5 @@
 import * as Atoms from '../../../Atoms';
+import Form from '../../Form';
 
 function TaskForm({ 
     newTaskName,
@@ -11,9 +12,14 @@ function TaskForm({
     setNewStatus,
     addTask
 }) {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        addTask();
+    };
+
     return (
-        <Atoms.Card>
-            <Atoms.Text as="h2">Criar nova tarefa</Atoms.Text>
+        <Form onSubmit={handleSubmit}>
+            <Atoms.Heading as="h2">Criar nova tarefa</Atoms.Heading>
 
             <Atoms.Input
                 type="text"
@@ -32,7 +38,8 @@ function TaskForm({
                 value={newDueDate}
                 onChange={e => setNewDueDate(e.target.value)}
             />
-            <select
+
+            <Atoms.Select
                 value={newStatus}
                 onChange={e => setNewStatus(e.target.value)}
             >
@@ -40,12 +47,13 @@ function TaskForm({
                 <option value="todo">A Fazer</option>
                 <option value="in_progress">Em Progresso</option>
                 <option value="done">Concluído</option>
-            </select>
+            </Atoms.Select>
 
-            <Atoms.Button onClick={addTask}>
+            <Atoms.Button type="submit" aria-label="Adicionar tarefa">
                 Adicionar Tarefa
             </Atoms.Button>
-        </Atoms.Card>
+        </Form>
     );
 }
+
 export default TaskForm;

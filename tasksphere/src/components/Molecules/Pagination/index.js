@@ -11,8 +11,8 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
 
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-            <Atoms.Button  onClick={handlePrevious} disabled={currentPage === 1}>
+        <Atoms.Box style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+            <Atoms.Button  onClick={handlePrevious} disabled={currentPage === 1} aria-label="Página anterior">
                 Anterior
             </Atoms.Button >
             {[...Array(totalPages)].map((_, index) => (
@@ -26,10 +26,10 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
                     {index + 1}
                 </Atoms.Button >
             ))}
-            <Atoms.Button onClick={handleNext} disabled={currentPage === totalPages}>
+            <Atoms.Button onClick={handleNext} disabled={currentPage === totalPages} aria-label="Próxima página">
                 Próximo
             </Atoms.Button>
-        </div>
+        </Atoms.Box>
     );
 }
 

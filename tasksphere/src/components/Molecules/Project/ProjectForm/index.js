@@ -15,7 +15,7 @@ function ProjectForm({
     
     return (
         <Atoms.Card>
-            <Atoms.Text as="h2">Criar novo projeto</Atoms.Text>
+            <Atoms.Heading as="h2">Criar novo projeto</Atoms.Heading>
 
             <Atoms.Input
                 type="text"
@@ -40,9 +40,9 @@ function ProjectForm({
                 onChange={e => setNewEndDate(e.target.value)}
             />
 
-            <Atoms.Button onClick={addProject}>
+            <Atoms.Button onClick={addProject} aria-label="Adicionar projeto">
                 Adicionar Projeto
-            </Atoms.Button>
+            </Atoms.Button >
         </Atoms.Card>
     );
 }

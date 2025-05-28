@@ -6,20 +6,8 @@ import * as Molecules from '../..';
 import { getAuth } from "firebase/auth";
 
 
-
 export default function TaskList({ tasks, projects, project, collaborators, setTasks, getTasks }) {
 
-
-    const fetchTasks = async () => {
-        console.log('passou aqui tasklist', tasksList);
-        const q = query(collection(db, 'tasks'), where('project_id', '==', project.id));
-        const snapshot = await getDocs(q);  
-        const tasksList = [];
-        snapshot.forEach((doc) => {
-            tasksList.push({ id: doc.id, ...doc.data() });
-        });
-        setTasks(tasksList);
-    };
 
     if (!tasks || !Array.isArray(tasks)) {
         console.warn("TaskList recebeu uma prop 'tasks' inválida:", tasks);
@@ -33,7 +21,6 @@ export default function TaskList({ tasks, projects, project, collaborators, setT
             await deleteDoc(doc(db, "tasks", taskId));
             alert("Tarefa excluída com sucesso!");
            await getTasks();
-            // Idealmente: atualize a lista no estado pai ou re-fetch
         } catch (error) {
             console.error("Erro ao excluir tarefa:", error);
             alert("Erro ao excluir tarefa.");
@@ -70,7 +57,7 @@ export default function TaskList({ tasks, projects, project, collaborators, setT
     const isCollaborator = collaborators?.some(user => user.id === currentUser?.uid);
 
     return (
-        <div>
+        <Atoms.Box>
             <Atoms.Text variant="titleLogin">Tarefas</Atoms.Text>
             {tasks.map(task => {
                 const canEditOrDelete = isCreator || task.created_by === currentUser?.uid;
@@ -86,6 +73,6 @@ export default function TaskList({ tasks, projects, project, collaborators, setT
                     />
                 );
             })}
-        </div>
+        </Atoms.Box>
     );
 }

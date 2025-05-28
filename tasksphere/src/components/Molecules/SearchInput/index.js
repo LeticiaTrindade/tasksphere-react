@@ -1,14 +1,15 @@
+import * as Atoms from '../../Atoms';
 function SearchInput({ search, setSearch }) {
   return (
-    <div>
+    <Atoms.Box>
       <label>Pesquisar por nome: </label>
-      <input 
+      <Atoms.Input 
         type="text" 
         value={search}
         onChange={e => setSearch(e.target.value)}
         placeholder="Digite o nome da tarefa"
       />
-    </div>
+    </Atoms.Box>
   );
 }
 

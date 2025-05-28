@@ -7,6 +7,6 @@ export default function Header() {
     const { user, handleLogout } = useContext(AuthContext);
 
     return (
-            <Atoms.Button onClick={handleLogout}>Sair</Atoms.Button>
+            <Atoms.Button onClick={handleLogout} aria-label="Sair da conta">Sair</Atoms.Button>
     );
 }
