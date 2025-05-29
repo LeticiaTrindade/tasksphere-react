@@ -15,7 +15,7 @@ function ProjectItem({ project, compact = false }) {
         text.length > limit ? text.slice(0, limit) + '...' : text;
 
     return (
-        <Atoms.Card>
+        <Atoms.Box variant='card'>
             <h2 style={{ margin: 0, fontSize: '1.5rem', color: '#333' }}>
                 {truncate(project.name, 30)}
             </h2>
@@ -29,8 +29,8 @@ function ProjectItem({ project, compact = false }) {
             )}
 
             <Atoms.Box style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontSize: '0.95rem', color: '#666' }}>
-                <p><strong>Início:</strong> {formatDate(project.start_date)}</p>
-                <p><strong>Término:</strong> {formatDate(project.end_date)}</p>
+                <Atoms.Text><strong>Início:</strong> {formatDate(project.start_date)}</Atoms.Text>
+                <Atoms.Text><strong>Término:</strong> {formatDate(project.end_date)}</Atoms.Text>
             </Atoms.Box>
 
             {!compact && (
@@ -47,7 +47,7 @@ function ProjectItem({ project, compact = false }) {
                     Ver Projeto
                 </Atoms.Button >
             </Atoms.Box>
-        </Atoms.Card>
+        </Atoms.Box>
     );
 }
 

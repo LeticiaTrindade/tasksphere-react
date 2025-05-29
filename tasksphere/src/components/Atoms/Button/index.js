@@ -5,15 +5,18 @@ import { space } from 'styled-system';
 const ButtonStyle = styled.button`
   ${space}
   padding: 0;
-  background-color: #2e86de;
+  background-color: #9333EA;
   color: #fff;
   border: none;
   cursor: pointer;
   width: 100%;
-  height: 50px;
-  marginBottom: 1rem;
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
   &:hover {
-  background-color: #1e6fbb;
+  background-color:rgb(114, 29, 194);
+
+  }
 }
 &:disabled {
   background-color: #ccc;
@@ -22,7 +25,7 @@ const ButtonStyle = styled.button`
  `;
 
 ButtonStyle.defaultProps = {
-  padding: '10px 20px',
+  padding: '10px 20px'
 }
 
 const Button = ({ children, onClick, type = 'button', ...props }) => {

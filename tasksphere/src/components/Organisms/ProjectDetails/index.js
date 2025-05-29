@@ -92,17 +92,17 @@ function ProjectDetails({
 
     return (
         <>
-            <Atoms.Text variant="titleLogin">{project.name}</Atoms.Text>
+            <Atoms.Heading  as="h1">{project.name}</Atoms.Heading>
 
             <Atoms.Flex>
-                <p><strong>Início:</strong> {formatDate(project.start_date)}</p>
-                <p><strong>Término:</strong> {formatDate(project.end_date)}</p>
+                <Atoms.Text variante="subTitle"><strong>Início:</strong> {formatDate(project.start_date)} | <strong>Término:</strong> {formatDate(project.end_date)}</Atoms.Text>
+
             </Atoms.Flex>
 
             <Atoms.Flex>
                 <Atoms.Card>
                     <Atoms.Text variant="titleLogin" className="mb-2">Detalhes do Projeto</Atoms.Text>
-                    <p className="mb-2">{project.description}</p>
+                    <Atoms.Text className="mb-2">{project.description}</Atoms.Text>
 
                     <Atoms.Box className="mt-4">
                         <Atoms.Text variant="titleLogin" className="mb-2">Colaboradores:</Atoms.Text>
@@ -115,7 +115,7 @@ function ProjectDetails({
                                 ))}
                             </ul>
                         ) : (
-                            <p className="text-sm text-gray-500">Nenhum colaborador encontrado.</p>
+                            <Atoms.Text className="text-sm text-gray-500">Nenhum colaborador encontrado.</Atoms.Text>
                         )}
                     </Atoms.Box>
 

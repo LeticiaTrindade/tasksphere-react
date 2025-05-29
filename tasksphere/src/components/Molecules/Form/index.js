@@ -9,7 +9,6 @@ function Form({ children, onSubmit }) {
         flexDirection: 'column',
         gap: '10px',
         padding: '20px',
-        border: '1px solid #ddd',
         borderRadius: '8px',
         background: '#fafafa',
       }}

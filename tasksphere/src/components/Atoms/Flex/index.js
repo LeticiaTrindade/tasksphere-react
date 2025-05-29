@@ -4,8 +4,9 @@ import { flexbox, space, layout, color } from 'styled-system';
 const Flex = styled.div`
   display: flex;
   flex-direction: ${(props) => props.flexDirection || 'row'};
-  justify-content: ${(props) => props.justifyContent || 'space-between'};
-  flex-wrap: wrap
+  justify-content: ${(props) => props.justifyContent || 'space-around'};
+  flex-wrap: wrap;
+  align-items: center;
   ${flexbox}
   ${space}
   ${layout}

@@ -1,11 +1,34 @@
+import React from 'react';
+import styled from 'styled-components';
+import { space, layout, flexbox, border, shadow, color } from 'styled-system';
 import * as Atoms from '../../Atoms';
+
+const AuthLayoutContainer = styled(Atoms.Box)`
+  background: linear-gradient(90deg, rgba(216, 180, 254, 1) 0%, rgba(252, 165, 167, 1) 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ${space}
+  ${layout}
+  ${flexbox}
+  ${color}
+`;
 
 export default function AuthLayout({ children }) {
   return (
-    <Atoms.Box style={{minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Atoms.Box style={{ padding: '200px', boxShadow: '0 0 10px rgba(0,0,0,0.1)', width: '100%', maxWidth: '400px' }}>
+    <AuthLayoutContainer>
+      <Atoms.Box
+      
+        boxShadow="md"
+        borderRadius="20px"
+        p={2}
+        width="100%"
+        maxWidth="400px"
+        bg="white"
+      >
         {children}
       </Atoms.Box>
-    </Atoms.Box>
+    </AuthLayoutContainer>
   );
 }

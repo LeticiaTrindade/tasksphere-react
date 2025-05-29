@@ -1,6 +1,7 @@
 import * as Atoms from '../../../Atoms';
 import formatDate from '../../../../utils/formatDate';
-import { FaCheckCircle, FaHourglassHalf, FaTimesCircle } from 'react-icons/fa'; // Ícones para status
+import { FaCheckCircle, FaHourglassHalf, FaTimesCircle,FaPencilAlt  } from 'react-icons/fa'; // Ícones para status
+import { MdDeleteForever } from "react-icons/md";
 
 function TaskItem({ task, projects, canEditOrDelete, onEdit, onDelete }) {
   if (!task) return null;
@@ -36,18 +37,10 @@ function TaskItem({ task, projects, canEditOrDelete, onEdit, onDelete }) {
         {task.name}
       </Atoms.Text>
 
-      {canEditOrDelete && (
-        <Atoms.Box className="flex gap-2">
-          <Atoms.Button className="btn btn-sm btn-primary" onClick={() => onEdit(task)} aria-label="Editar tarefa">Editar</Atoms.Button>
-          <Atoms.Button className="btn btn-sm btn-danger" onClick={() => onDelete(task)} aria-label="Excluir tarefa">Excluir</Atoms.Button>
-        </Atoms.Box>
-      )}
-
-      <Atoms.Box>
-        <Atoms.Icon size="20px" color="gray"/>
-        <Atoms.Text>{statusLabel}</Atoms.Text>
+      <Atoms.Flex>
         {getStatusIcon(task.status)}
-      </Atoms.Box>
+        <Atoms.Text>{statusLabel}</Atoms.Text>
+      </Atoms.Flex>
 
       <Atoms.Text marginBottom="0.25rem">
         <Atoms.Text as="strong">Vencimento:</Atoms.Text> {formatDate(task.due_date)}
@@ -56,6 +49,13 @@ function TaskItem({ task, projects, canEditOrDelete, onEdit, onDelete }) {
       <Atoms.Text>
         <Atoms.Text as="strong">Projeto:</Atoms.Text> {projectName}
       </Atoms.Text>
+
+       {canEditOrDelete && (
+        <Atoms.Box className="flex gap-2">
+          <Atoms.Button className="btn btn-sm btn-primary" onClick={() => onEdit(task)} aria-label="Editar tarefa"><FaPencilAlt color='white' /> Editar</Atoms.Button>
+          <Atoms.Button className="btn btn-sm btn-danger" onClick={() => onDelete(task)} aria-label="Excluir tarefa"><MdDeleteForever  coler='white'/> Excluir</Atoms.Button>
+        </Atoms.Box>
+      )}
     </Atoms.Card>
   );
 }

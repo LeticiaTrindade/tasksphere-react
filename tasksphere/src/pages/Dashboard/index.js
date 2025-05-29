@@ -5,9 +5,12 @@ import ProjectSection from '../../components/Organisms/ProjectSection';
 
 export default function Dashboard() {
   return (
+    <>
     <DashboardLayout>
       <Header />
-      <ProjectSection />
-    </DashboardLayout>
+    
+        <ProjectSection />
+      </DashboardLayout>
+    </>
   );
 }

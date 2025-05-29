@@ -32,7 +32,6 @@ export default function ProjectDetailsPage() {
     }
   };
 
-  // Fetch tasks
   const fetchTasks = async () => {
     const q = query(collection(db, 'tasks'), where('project_id', '==', projectId));
     const snapshot = await getDocs(q);
@@ -40,7 +39,6 @@ export default function ProjectDetailsPage() {
     setTasks(tasksList);
   };
 
-  // Fetch collaborators
   const fetchCollaborators = async (projectId) => {
     const snapshot = await getDocs(collection(db, `projects/${projectId}/collaborators`));
     const collaboratorsList = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -79,6 +77,8 @@ export default function ProjectDetailsPage() {
   }
 
   return (
+   <>
+     
     <DashboardLayout>
       <Header />
       <ProjectDetails
@@ -93,5 +93,6 @@ export default function ProjectDetailsPage() {
         setTasks={setTasks}
       />
     </DashboardLayout>
+    </>
   );
 }

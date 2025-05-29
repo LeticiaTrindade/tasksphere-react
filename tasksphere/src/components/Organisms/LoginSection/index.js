@@ -6,10 +6,10 @@ export default function LoginSection() {
 
     return (
         <>
-            <Atoms.Text variant='titleLogin'>Bem-vindo devolta!</Atoms.Text>
-            <Atoms.Text>Entre para continuar</Atoms.Text>
+            <Atoms.Text variant='titleLogin'>Bem-vindo(a) de volta!</Atoms.Text>
+            <Atoms.Text variant='subtitlelogin'>Entre para continuar</Atoms.Text>
             <Molecules.LoginForm />
-            <Atoms.Text>Não tem uma conta? <Link to="/register">Cadastre-se</Link></Atoms.Text>
+            <Atoms.Text  variant='subtitlelogin'>Não tem uma conta? <Link style={{textDecorationLine: 'none', color:'#9333EA', hover:{color: 'rgb(114, 29, 194'}}}to="/register">Cadastre-se</Link></Atoms.Text>
         </>
     );
 }

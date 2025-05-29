@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space, layout, border, shadow, color } from 'styled-system';
+import { space, layout, border, shadow, color, background } from 'styled-system';
 
 const Card = styled.div`
   ${space}
@@ -7,13 +7,17 @@ const Card = styled.div`
   ${border}
   ${shadow}
   ${color}
+  background: ${props => props.background || 'white'};  
   max-width: 500px;
-  min-width: 300px; 
+  min-width: 300px;
+  margin: 1rem ;
+  hight: auto;
+  border-radius: ${props => props.borderRadius || '20px'};
+  padding: ${props => props.padding || '2rem'};
+  
 `;
 
-Card.defaultProps = {
-    p: 3,                
-    bg: 'white',
+Card.defaultProps = {           
     padding: "1rem",
     boxShadow: "sm",
     borderRadius: "md",

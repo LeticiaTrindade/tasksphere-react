@@ -10,7 +10,7 @@ function ProjectSection() {
     const { user } = useContext(AuthContext);
     const [projects, setProjects] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 3;
+    const itemsPerPage = 2;
 
     const [newProject, setNewProject] = useState('');
     const [newDescription, setNewDescription] = useState('');
@@ -61,7 +61,7 @@ function ProjectSection() {
     const currentProjects = projects.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <Atoms.Flex>
+        <Atoms.Flex >
             <Molecules.ProjectForm
                 newProject={newProject}
                 setNewProject={setNewProject}

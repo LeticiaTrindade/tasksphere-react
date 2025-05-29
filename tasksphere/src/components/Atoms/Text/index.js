@@ -14,7 +14,7 @@ const TextStyle = styled.p`
         fontSize: 4,
         fontWeight: 'bold',
         textAlign: 'center',
-        mb: 3, 
+        marginBottom: '0.5rem',
       },
       error: {
         color: 'red',
@@ -31,14 +31,25 @@ const TextStyle = styled.p`
         mb: 2,
       },
       subtitle: {
-        fontSize: 3, // Um tamanho para subtítulos
-        fontWeight: 'medium', // Ou 'semibold' se definido no seu tema
-        color: 'gray.700', // Exemplo: uma cor de cinza mais escura do tema
-        mb: 2,
+        fontSize: 3,
+        fontWeight: 'medium', 
+        color: 'gray.700',
+        mb: 0,
+        textAlign: 'center',
+        marginBottom: '1rem',
+        
+      },
+      subtitlelogin: {
+        fontSize: 2,
+        fontWeight: 'normal',
+        color: '#374151',
+        textAlign: 'center',
+        marginBottom: '1rem',
+        marginTop: '0'
       },
       caption: {
-        fontSize: 0, // Um tamanho bem pequeno para legendas/notas
-        color: 'gray.500', // Um cinza mais claro
+        fontSize: 0,
+        color: 'gray.500', 
         lineHeight: 1.2,
       },
     },
@@ -49,7 +60,7 @@ const TextStyle = styled.p`
 TextStyle.defaultProps = {
   fontSize: 2,
   lineHeight: '1.5',
-  color: 'text', // Assumindo 'text' é uma cor definida no seu tema
+  color: '#374151',
   cursor: false,
 };
 

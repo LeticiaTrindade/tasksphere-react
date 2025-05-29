@@ -10,11 +10,12 @@ const InputStyle = styled.input`
   max-width: 100%;
   transition: all 0.2s ease-in-out; 
   min-height: 40px;
+  margin-bottom: 1rem;
 
   &:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); 
+    border-color: ##9333EA;
+    box-shadow: 0 0 0 3px rgba(114, 29, 194, 0.25); 
   }
 `;
 

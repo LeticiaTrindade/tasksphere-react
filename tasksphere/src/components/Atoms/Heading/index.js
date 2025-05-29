@@ -6,6 +6,7 @@ const HeadingStyle = styled.h1`
   ${space}
   ${color}
   ${typography}
+  text-align: center;
   
   ${variant({
     prop: 'variant',
