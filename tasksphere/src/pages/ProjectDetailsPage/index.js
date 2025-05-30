@@ -6,6 +6,7 @@ import { DashboardLayout } from '../../components/Templates';
 import Header from '../../components/Molecules/Header';
 import ProjectDetails from '../../components/Organisms/ProjectDetails';
 import * as Atoms from '../../components/Atoms';
+import { backgroundColor } from 'styled-system';
 
 export default function ProjectDetailsPage() {
   const { projectId } = useParams();

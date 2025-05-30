@@ -6,7 +6,7 @@ const Flex = styled.div`
   flex-direction: ${(props) => props.flexDirection || 'row'};
   justify-content: ${(props) => props.justifyContent || 'space-around'};
   flex-wrap: wrap;
-  align-items: center;
+  
   ${flexbox}
   ${space}
   ${layout}

@@ -22,6 +22,7 @@ const TextStyle = styled.p`
         fontWeight: 'normal',
         mt: 2,
         mb: 2,
+        textAlign: 'center',
       },
       success: {
         color: 'green',

@@ -8,7 +8,6 @@ export default function Dashboard() {
     <>
     <DashboardLayout>
       <Header />
-    
         <ProjectSection />
       </DashboardLayout>
     </>

@@ -18,7 +18,7 @@ function TaskForm({
     };
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Form variant='tasks' onSubmit={handleSubmit}>
             <Atoms.Heading as="h2">Criar nova tarefa</Atoms.Heading>
 
             <Atoms.Input

@@ -1,6 +1,6 @@
 import * as Atoms from '../../../Atoms';
 import formatDate from '../../../../utils/formatDate';
-import { FaCheckCircle, FaHourglassHalf, FaTimesCircle,FaPencilAlt  } from 'react-icons/fa'; // Ícones para status
+import { FaCheckCircle, FaHourglassHalf, FaTimesCircle,FaPencilAlt  } from 'react-icons/fa';
 import { MdDeleteForever } from "react-icons/md";
 
 function TaskItem({ task, projects, canEditOrDelete, onEdit, onDelete }) {
@@ -17,7 +17,6 @@ function TaskItem({ task, projects, canEditOrDelete, onEdit, onDelete }) {
 
   const statusLabel = statusText[task.status] || 'Desconhecido';
 
-  // Função que retorna o ícone de acordo com o status
   const getStatusIcon = (status) => {
     switch (status) {
       case 'done':
@@ -32,12 +31,12 @@ function TaskItem({ task, projects, canEditOrDelete, onEdit, onDelete }) {
   };
 
   return (
-    <Atoms.Card>
+    <Atoms.Box variant='card'>
       <Atoms.Text as="h3" variant="subtitle" marginBottom="0.5rem">
         {task.name}
       </Atoms.Text>
 
-      <Atoms.Flex>
+      <Atoms.Flex style={{justifyContent: 'center', alignItems: 'center'}}>
         {getStatusIcon(task.status)}
         <Atoms.Text>{statusLabel}</Atoms.Text>
       </Atoms.Flex>
@@ -46,17 +45,13 @@ function TaskItem({ task, projects, canEditOrDelete, onEdit, onDelete }) {
         <Atoms.Text as="strong">Vencimento:</Atoms.Text> {formatDate(task.due_date)}
       </Atoms.Text>
 
-      <Atoms.Text>
-        <Atoms.Text as="strong">Projeto:</Atoms.Text> {projectName}
-      </Atoms.Text>
-
        {canEditOrDelete && (
-        <Atoms.Box className="flex gap-2">
+        <Atoms.Box >
           <Atoms.Button className="btn btn-sm btn-primary" onClick={() => onEdit(task)} aria-label="Editar tarefa"><FaPencilAlt color='white' /> Editar</Atoms.Button>
           <Atoms.Button className="btn btn-sm btn-danger" onClick={() => onDelete(task)} aria-label="Excluir tarefa"><MdDeleteForever  coler='white'/> Excluir</Atoms.Button>
         </Atoms.Box>
       )}
-    </Atoms.Card>
+    </Atoms.Box>
   );
 }
 

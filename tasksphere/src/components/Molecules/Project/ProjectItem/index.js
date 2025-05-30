@@ -16,18 +16,18 @@ function ProjectItem({ project, compact = false }) {
 
     return (
         <Atoms.Box variant='card'>
-            <h2 style={{ margin: 0, fontSize: '1.5rem', color: '#333' }}>
+            <Atoms.Text variant='title'>
                 {truncate(project.name, 30)}
-            </h2>
+            </Atoms.Text>
 
             {project.description && compact && (
-                <p>{truncate(project.description, 60)}</p>
+               <Atoms.Text>{truncate(project.description, 60)}</Atoms.Text>
             )}
 
             {!compact && project.description && (
                 <p>{project.description}</p>
             )}
-
+    
             <Atoms.Box style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', fontSize: '0.95rem', color: '#666' }}>
                 <Atoms.Text><strong>Início:</strong> {formatDate(project.start_date)}</Atoms.Text>
                 <Atoms.Text><strong>Término:</strong> {formatDate(project.end_date)}</Atoms.Text>

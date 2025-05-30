@@ -8,20 +8,13 @@ const Card = styled.div`
   ${shadow}
   ${color}
   background: ${props => props.background || 'white'};  
-  max-width: 500px;
-  min-width: 300px;
-  margin: 1rem ;
-  hight: auto;
+  margin-top: 2.5rem;
   border-radius: ${props => props.borderRadius || '20px'};
   padding: ${props => props.padding || '2rem'};
-  
 `;
 
-Card.defaultProps = {           
-    padding: "1rem",
-    boxShadow: "sm",
-    borderRadius: "md",
-    border: "1px solid #eaeaea",
+Card.defaultProps = {
+
 };
 
 export default Card;

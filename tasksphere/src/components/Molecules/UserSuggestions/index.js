@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as Atoms from '../../Atoms';
+import { backgroundColor } from 'styled-system';
 
 function UserSuggestions({ onAdd }) {
     const [suggestions, setSuggestions] = useState([]);
@@ -36,12 +37,12 @@ function UserSuggestions({ onAdd }) {
                     {suggestions.map(user => (
                         <Atoms.Box style={{ marginBottom: '10px', width: '100%' }} key={user.id}>
                             <Atoms.Flex style={{ justifyContent: 'space-between', alignItems: 'center', }}>
-                                <Atoms.Box >
+                                <Atoms.Box style={{display:'flex', alignItems: 'center'}}>
                                     <img style={{ borderRadius: '20px' }} src={user.picture} alt={user.name} className="rounded-full w-8 h-8" />
-                                    <span>{user.name}</span>
+                                    <span style={{marginLeft: '20px'}}>{user.name }</span>
                                 </Atoms.Box>
                                 <Atoms.Box style={{ width: '60px', height: '40px', overflow: 'hidden' }}>
-                                    <Atoms.Button onClick={() => onAdd(user)} aria-label="Adicionar colaborador">Adicionar</Atoms.Button>
+                                    <Atoms.Button onClick={() => onAdd(user)} aria-label="Adicionar colaborador">+</Atoms.Button>
                                 </Atoms.Box>
                             </Atoms.Flex>
 

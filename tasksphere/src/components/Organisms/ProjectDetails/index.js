@@ -92,30 +92,28 @@ function ProjectDetails({
 
     return (
         <>
-            <Atoms.Heading  as="h1">{project.name}</Atoms.Heading>
-
-            <Atoms.Flex>
-                <Atoms.Text variante="subTitle"><strong>Início:</strong> {formatDate(project.start_date)} | <strong>Término:</strong> {formatDate(project.end_date)}</Atoms.Text>
-
-            </Atoms.Flex>
+        <Atoms.Heading as="h1">{project.name}</Atoms.Heading>
+            <Atoms.Box >
+                <Atoms.Text variant="subtitle"><strong>Início:</strong> {formatDate(project.start_date)} | <strong>Término:</strong> {formatDate(project.end_date)}</Atoms.Text>
+            </Atoms.Box>
 
             <Atoms.Flex>
                 <Atoms.Card>
-                    <Atoms.Text variant="titleLogin" className="mb-2">Detalhes do Projeto</Atoms.Text>
-                    <Atoms.Text className="mb-2">{project.description}</Atoms.Text>
+                    <Atoms.Text variant='subtitlelogin' >Detalhes do Projeto</Atoms.Text>
+                    <Atoms.Text>{project.description}</Atoms.Text>
 
-                    <Atoms.Box className="mt-4">
-                        <Atoms.Text variant="titleLogin" className="mb-2">Colaboradores:</Atoms.Text>
+                    <Atoms.Box>
+                        <Atoms.Text variant="titleLogin">Colaboradores:</Atoms.Text>
                         {collaborators.length > 0 ? (
-                            <ul className="list-disc list-inside">
+                            <ul>
                                 {collaborators.map(user => (
                                     <li key={user.id}>
-                                        <Atoms.Icon name="user" /> {user.name ? user.name : "Nome não disponível"} - {user.email ? user.email : "Email não disponível"}
+                                        <Atoms.Icon name="user" /> {user.name || "Nome não disponível"} - {user.email || "Email não disponível"}
                                     </li>
                                 ))}
                             </ul>
                         ) : (
-                            <Atoms.Text className="text-sm text-gray-500">Nenhum colaborador encontrado.</Atoms.Text>
+                            <Atoms.Text>Nenhum colaborador encontrado.</Atoms.Text>
                         )}
                     </Atoms.Box>
 
@@ -133,26 +131,28 @@ function ProjectDetails({
                     setNewStatus={setNewStatus}
                     addTask={addTask}
                 />
-                <Atoms.Card>
-                    <Molecules.FilterSelect filter={filter} setFilter={setFilter} />
-                    <Molecules.SearchInput search={search} setSearch={setSearch} />
-
-                    <Molecules.TaskList
-                        tasks={currentTasks}
-                        projects={[project]}
-                        project={project}
-                        collaborators={collaborators}
-                        setTasks={setTasks}
-                        getTasks={getTasks}
-                    />
-
-                    <Molecules.Pagination
-                        totalPages={totalPages}
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
-                    />
-                </Atoms.Card>
             </Atoms.Flex>
+
+            <Atoms.Card>
+                <Molecules.FilterSelect filter={filter} setFilter={setFilter} />
+                <Molecules.SearchInput search={search} setSearch={setSearch} />
+
+                <Molecules.TaskList
+                    tasks={currentTasks}
+                    projects={[project]}
+                    project={project}
+                    collaborators={collaborators}
+                    setTasks={setTasks}
+                    getTasks={getTasks}
+                />
+
+                <Molecules.Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
+            </Atoms.Card>
+
         </>
     );
 }

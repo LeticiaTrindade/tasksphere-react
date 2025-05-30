@@ -9,6 +9,7 @@ function Select({ value, onChange, children, ...props }) {
         borderRadius: '4px',
         border: '1px solid #ccc',
         fontSize: '1rem',
+        marginBottom: '1rem'
       }}
       {...props}
     >

@@ -61,7 +61,7 @@ function ProjectSection() {
     const currentProjects = projects.slice(startIndex, startIndex + itemsPerPage);
 
     return (
-        <Atoms.Flex >
+        <Atoms.Flex>
             <Molecules.ProjectForm
                 newProject={newProject}
                 setNewProject={setNewProject}

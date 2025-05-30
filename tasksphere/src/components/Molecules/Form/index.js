@@ -1,21 +1,30 @@
-import * as Atoms from '../../Atoms';
+import { variant } from 'styled-system';
+import styled from 'styled-components';
 
-function Form({ children, onSubmit }) {
+const FormStyle = styled.form`
+  ${variant({
+    prop: 'variant',
+    variants: {
+      tasks: {
+        marginTop: '2.5rem',
+      },
+    },
+  })}
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: white;
+`;
+
+const Form = ({ children, onSubmit, ...props }) => {
   return (
-    <form
-      onSubmit={onSubmit}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '10px',
-        padding: '20px',
-        borderRadius: '8px',
-        background: '#fafafa',
-      }}
-    >
+    <FormStyle onSubmit={onSubmit} {...props}>
       {children}
-    </form>
+    </FormStyle>
   );
-}
+};
 
 export default Form;

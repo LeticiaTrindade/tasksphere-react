@@ -22,21 +22,13 @@ export default function Header() {
                 Olá, {user?.email}!
             </Atoms.Heading>
 
-            <Atoms.Box style={{}}>
+            <Atoms.Box>
                 <Atoms.Button 
                     onClick={handleLogout} 
                     aria-label="Sair da conta"
                     style={{
-                        backgroundColor: '#7C3AED', // Roxo
-                        color: 'white',
-                        padding: '10px 20px',
-                        borderRadius: '8px',
-                        transition: 'background-color 0.3s ease',
-                        cursor: 'pointer',
-                        fontWeight: '500',
+                        padding: '10px 20px'
                     }}
-                    onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#6D28D9'}
-                    onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#7C3AED'}
                 >
                     Sair
                 </Atoms.Button>
