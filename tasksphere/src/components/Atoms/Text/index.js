@@ -53,6 +53,12 @@ const TextStyle = styled.p`
         color: 'gray.500', 
         lineHeight: 1.2,
       },
+      description: {
+          fontSize: 1,
+        color: 'gray.500', 
+        lineHeight: 1.2,
+        margin: '0',
+      }
     },
   })}
   cursor: ${props => (props.cursor ? 'pointer' : 'auto')};

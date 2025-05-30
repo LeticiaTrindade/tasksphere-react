@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as Molecules from '../../Molecules';
 import * as Atoms from '../../Atoms';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 import PasswordValidation from '../../../utils/PasswordValidation.js';
 import { auth, db } from '../../../config/firebase.js';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
@@ -52,13 +52,17 @@ function RegisterForm() {
     return (
         <Molecules.Form onSubmit={handleRegister}>
             {error && <Atoms.Text variant="error">{error}</Atoms.Text>}
-            <Atoms.Input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Nome completo" />
-            <Atoms.Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
-            <Atoms.Input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Senha" />
-            <Atoms.Input type="password" value={confirmPassword} onChange={e => setconfirmPassword(e.target.value)} placeholder="Confirmar senha" />
+            <Atoms.Text variant='description'>Nome completo:</Atoms.Text>
+            <Atoms.Input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="Digite aqui seu noem compelto." />
+            <Atoms.Text variant='description'>Email:</Atoms.Text>
+            <Atoms.Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Digite aqui seu email" />
+            <Atoms.Text variant='description'>Senha:</Atoms.Text>
+            <Atoms.Input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Crie sua senha" />
+            <Atoms.Text variant='description'>Confirmar senha:</Atoms.Text>
+            <Atoms.Input type="password" value={confirmPassword} onChange={e => setconfirmPassword(e.target.value)} placeholder="Confirme sua senha" />
             <Atoms.Button type="submit" aria-label="Cadastrar conta de usuário">Cadastrar</Atoms.Button>
         </Molecules.Form>
     );
 }
 
-export default RegisterForm;
+export default RegisterForm;

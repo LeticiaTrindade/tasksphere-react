@@ -17,23 +17,29 @@ function ProjectForm({
         <Atoms.Card>
             <Atoms.Heading as="h2">Criar novo projeto</Atoms.Heading>
 
+<Atoms.Text variant='description'>Nome do projeto:</Atoms.Text>
             <Atoms.Input
                 type="text"
                 value={newProject}
                 onChange={e => setNewProject(e.target.value)}
-                placeholder="Nome do Projeto"
+                placeholder="Digite aqui o nome do projeto"
             />
+
+            <Atoms.Text variant='description'>Descrição do projeto:</Atoms.Text>
             <Atoms.Input
                 type="text"
                 value={newDescription}
                 onChange={e => setNewDescription(e.target.value)}
-                placeholder="Descrição"
+                placeholder="Digite aqui a descrição do projeto"
             />
+
+            <Atoms.Text variant='description'>Data de início do projeto:</Atoms.Text>
             <Atoms.Input
                 type="date"
                 value={newStartDate}
                 onChange={e => setNewStartDate(e.target.value)}
             />
+            <Atoms.Text variant='description'>Data de término do projeto:</Atoms.Text>
             <Atoms.Input
                 type="date"
                 value={newEndDate}
@@ -47,4 +53,4 @@ function ProjectForm({
     );
 }
 
-export default ProjectForm;
+export default ProjectForm;

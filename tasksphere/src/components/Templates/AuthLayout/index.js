@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { space, layout, flexbox, border, shadow, color } from 'styled-system';
+import { space, layout, flexbox, color } from 'styled-system';
 import * as Atoms from '../../Atoms';
 
 const AuthLayoutContainer = styled(Atoms.Box)`

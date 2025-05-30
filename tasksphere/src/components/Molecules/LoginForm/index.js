@@ -19,6 +19,6 @@ export default function LoginForm() {
       <Atoms.Input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="Email" />
       <Atoms.Input type="password" value={password} onChange={e => setPassword(e.target.value)} placeholder="Senha" />
       <Atoms.Button type="submit" aria-label="Entrar na conta" onSubmit={onSubmit}>Entrar</Atoms.Button>
-    </Form>
-  );
+    </Form>
+  );
 }

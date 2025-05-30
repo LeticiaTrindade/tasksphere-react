@@ -1,5 +1,3 @@
-import { validatePassword } from "firebase/auth";
-
 function PasswordValidation(senha, confirmPassword) {
   const erros = [];
 

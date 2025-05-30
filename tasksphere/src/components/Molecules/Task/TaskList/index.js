@@ -1,5 +1,5 @@
 import React from 'react';
-import { doc, deleteDoc, updateDoc, query, collection, where, getDocs} from 'firebase/firestore';
+import { doc, deleteDoc, updateDoc} from 'firebase/firestore';
 import { db } from '../../../../config/firebase';
 import * as Atoms from '../../../Atoms';
 import * as Molecules from '../..';
@@ -27,34 +27,47 @@ export default function TaskList({ tasks, projects, project, collaborators, setT
         }
     }
 
-    async function handleEditTask(task) {
-        const newName = prompt("Digite o novo nome da tarefa:", task.name);
-        const newDescription = prompt("Digite a nova descrição:", task.description);
-        const newStatus = prompt("Digite o novo status (todo, in_progress, done):", task.status);
+   async function handleEditTask(task) {
+    const newName = prompt("Digite o novo nome da tarefa:", task.name);
+    const newDescription = prompt("Digite a nova descrição:", task.description);
 
-        if (newName && newStatus) {
-            try {
-                await updateDoc(doc(db, "tasks", task.id), {
-                    name: newName,
-                    description: newDescription,
-                    status: newStatus
-                });
-                alert("Tarefa atualizada com sucesso!");
-               await getTasks();
-                // Idealmente: atualize a lista no estado pai ou re-fetch
-            } catch (error) {
-                console.error("Erro ao editar tarefa:", error);
-                alert("Erro ao editar tarefa.");
-            }
-        }
+    const statusOptions = {
+        "1": "todo",
+        "2": "in_progress",
+        "3": "done"
+    };
+
+    const statusChoice = prompt(
+        "Escolha o novo status:\n1 - A Fazer\n2 - Em Progresso\n3 - Concluído",
+        "1"
+    );
+
+    const newStatus = statusOptions[statusChoice];
+
+    if (!newName || !newStatus) {
+        alert("Nome ou status inválido.");
+        return;
     }
+
+    try {
+        await updateDoc(doc(db, "tasks", task.id), {
+            name: newName,
+            description: newDescription,
+            status: newStatus
+        });
+        alert("Tarefa atualizada com sucesso!");
+        await getTasks();
+    } catch (error) {
+        console.error("Erro ao editar tarefa:", error);
+        alert("Erro ao editar tarefa.");
+    }
+}
 
 
     const auth = getAuth();
     const currentUser = auth.currentUser;
 
     const isCreator = project?.created_by === currentUser?.uid;
-    const isCollaborator = collaborators?.some(user => user.id === currentUser?.uid);
 
     return (
         <Atoms.Box>
