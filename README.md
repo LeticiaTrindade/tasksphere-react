@@ -1,8 +1,8 @@
-👥 Tasksphere
+# 👥 Tasksphere
 
 Aplicação web desenvolvida para simular um sistema de gerenciamento de projetos, utilizando uma arquitetura escalável. O projeto consome dados da API Random User para popular colaboradores fictícios, permitindo a adição visual de novos perfis e, futuramente, também a exclusão e gerenciamento completo.
 
-🚀 Tecnologias Utilizadas
+### 🚀 Tecnologias Utilizadas
 React.js – Biblioteca para construção da interface de usuário
 
 Firebase – Backend-as-a-Service para autenticação e base de dados
@@ -14,27 +14,32 @@ CSS Modules / Styled Components / Tailwind (especificar se usou algum)
 React Router (caso tenha navegação)
 
 📦 Instalação e Execução
-1. Clone o repositório
-bash
+### 1. Clone o repositório
 ```
 git clone https://github.com/seu-usuario/nome-do-repositorio.git
 cd nome-do-repositorio
 ```
-2. Instale as dependências
+### 2. Instale as dependências
 ```
 npm install
 ```
-3. Inicie a aplicação
+### 3. Inicie a aplicação
 ```
 npm run start
 ```
 
-A aplicação será iniciada automaticamente no modo de desenvolvimento:
+### A aplicação será iniciada automaticamente no modo de desenvolvimento:
 ```
 http://localhost:3000
 ```
+### Veja o projeto online aqui: https://leticiatrindade.github.io/tasksphere-react/
 
-🔧 Funcionalidades Implementadas
+Tela inicial:
+
+![image](https://github.com/user-attachments/assets/28969690-e0e4-4a40-8fad-f0d20fd154fc)
+
+
+### 🔧 Funcionalidades Implementadas
 ✅ Integração com randomuser.me para simular colaboradores
 
 ✅ Adição visual de colaboradores
@@ -45,14 +50,14 @@ http://localhost:3000
 
 ✅ CRUD de atividades
 
-🛠️ Funcionalidades em Desenvolvimento
+### 🛠️ Funcionalidades em Desenvolvimento
 
  &#x2610; gerenciamento de colaboradores
 
-🤝 Contribuindo
+### 🤝 Contribuindo
 Sinta-se livre para enviar pull requests ou abrir issues caso encontre algum problema ou tenha sugestões de melhorias.
 
-📬 Contato
+### 📬 Contato
 
 Caso deseje entrar em contato para feedbacks, colaborações ou recrutamento:
 
